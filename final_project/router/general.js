@@ -92,25 +92,7 @@ public_users.get("/author/:author", function (req, res) {
       (err) => res.status(404).send(err.message)
     );
   });
-// Get all books based on title
-public_users.get('/title/:title',function (req, res) {
-  //Write your code here
-  const title = req.params.title 
-  let validBooks = [];
-  //return new Promise((resolve, reject) => {
-    for (let bookISBN in books) {
-      const bookTitle = books[bookISBN].title;
-      if (bookTitle === title) {
-        validBooks.push(books[bookISBN]);
-      }
-    }
-    if (validBooks.length > 0) {
-        res.status(200).send(JSON.stringify(validBooks, null, 4));
-      } else {
-        res.status(404).send("The provided author does not exist");
-      }  
-  //return res.status(300).json({message: "Yet to be implemented"});
-});
+  
 function retrieveBookUsingTitle(title) {
     let matchingBooks = [];
     return new Promise((resolve, reject) => {
